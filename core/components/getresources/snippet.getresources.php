@@ -270,12 +270,13 @@ if (!empty($tvFilters)) {
                 $tvName = $modx->quote($f[0]);
                 if (is_numeric($f[1]) && !in_array($sqlOperator, array('LIKE', 'NOT LIKE'))) {
                     $tvValue = $f[1];
-                    if ($f[1] == (integer)$f[1]) {
+                    if (false && $f[1] == (integer)$f[1]) {
                         $tvValueField = "CAST({$tvValueField} AS SIGNED INTEGER)";
                         $tvDefaultField = "CAST({$tvDefaultField} AS SIGNED INTEGER)";
                     } else {
-                        $tvValueField = "CAST({$tvValueField} AS DECIMAL)";
-                        $tvDefaultField = "CAST({$tvDefaultField} AS DECIMAL)";
+                        $tvValue=floatval(str_replace(',','.',$tvValue));
+                        $tvValueField = "CAST({$tvValueField} AS DECIMAL(11,4))";
+                        $tvDefaultField = "CAST({$tvDefaultField} AS DECIMAL(11,4))";
                     }
                 } else {
                     $tvValue = $modx->quote($f[1]);
