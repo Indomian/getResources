@@ -373,7 +373,7 @@ if (!empty($sortbyTV)) {
                 $criteria->select("CAST(IFNULL(tvSort.value, tvDefault.default_text) AS SIGNED INTEGER) AS sortTV");
                 break;
             case 'decimal':
-                $criteria->select("CAST(IFNULL(tvSort.value, tvDefault.default_text) AS DECIMAL) AS sortTV");
+                $criteria->select("CAST(IFNULL(tvSort.value, tvDefault.default_text) AS DECIMAL(11,4)) AS sortTV");
                 break;
             case 'datetime':
                 $criteria->select("CAST(IFNULL(tvSort.value, tvDefault.default_text) AS DATETIME) AS sortTV");
@@ -389,7 +389,7 @@ if (!empty($sortbyTV)) {
                 $criteria->select("CAST(ISNULL(tvSort.value, tvDefault.default_text) AS BIGINT) AS sortTV");
                 break;
             case 'decimal':
-                $criteria->select("CAST(ISNULL(tvSort.value, tvDefault.default_text) AS DECIMAL) AS sortTV");
+                $criteria->select("CAST(ISNULL(tvSort.value, tvDefault.default_text) AS DECIMAL(11,4)) AS sortTV");
                 break;
             case 'datetime':
                 $criteria->select("CAST(ISNULL(tvSort.value, tvDefault.default_text) AS DATETIME) AS sortTV");
